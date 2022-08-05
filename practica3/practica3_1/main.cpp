@@ -3,9 +3,15 @@
 #include <stdlib.h>
 using namespace std;
 void registro();
+string leerArchivo();
 int main()
 {
+    char *contenido[254];
     registro();
+    string contenidodelarchivoMocodificado=leerArchivo();
+
+
+
 
 
     return 0;
@@ -57,6 +63,47 @@ char* codificador(char* contenidoDelArchivo ){//de caracter a entero y de entero
     }
 
     return Arreglobinario;
+
+
+
+}
+string leerArchivo(){
+    string contenido;
+    ifstream archivo;
+    archivo.open("C://Users//Juan//Documents//usuarios.txt",ios::in);//leer
+    if (archivo.fail()){
+        cout<<"no se pudo abrir la lista de usuarios.";
+        exit(1);
+    }
+
+    while(!archivo.eof()){//no sea el final
+        getline(archivo,contenido);
+
+    }
+    archivo.close();
+
+    return contenido;
+}
+
+void decodificador(string contenido){
+    ofstream listaDeUsiarios;
+
+
+    listaDeUsiarios.open("C://Users//Juan//Documents//usuariosenbinario.txt",ios::out); //nombre y modo escritura lo crea desde cero o lo reepmplaza
+    if (listaDeUsiarios.fail()){
+        cout<<"no se pudo abrir la lista de usuarios.";
+        exit(1);
+    }
+
+
+    ofstream listaDeUsuarios("C://Users//Juan//Documents//usuariosenbinario.txt");
+
+
+
+
+    listaDeUsiarios<<contenido;
+
+    listaDeUsiarios.close();
 
 
 
